@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify</title>
+  <link
+  rel="icon"
+  href=" https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="spot.css">
+<script src="./original_spotify.js"></script>
+<script src="./focus.js"></script>
+<script src="./mood.js"></script>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo">
+      <a href="#">
+        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" alt="Logo" />
+      </a>
+    </div>
+
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="fa fa-home"></span>
+            <span>Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" id="searchicon">
+            <span class="fa fa-search"></span>
+            <span>Search</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="fa fas fa-book"></span>
+            <span>Your Library</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="fa fas fa-plus-square"></span>
+            <span>Create Playlist</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="fa fas fa-heart"></span>
+            <span>Liked Songs</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="policies">
+      <ul>
+        <li>
+          <a href="">Legal</a>
+          <a href="">Safety & Privacy</a>
+          <a href="">privacy Policy  </a>
+        </li>
+        <li>
+          <a href="">Cookies</a>
+          <a href="">About Ads</a>
+          <a href="">Accessibility</a>
+        </li>
+        <li>
+          <a href="">Cookies</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="topbar">
+      <div class="prev-next-buttons">
+        <button type="button" class="fa fas fa-chevron-left"></button>
+        <button type="button" class="fa fas fa-chevron-right"></button>
+      </div>
+      <div class="search-bar">
+        <input type="search" id="search-input"
+         placeholder="Search by track or artist...."
+         oninput = "filterPlaylist()"
+         >
+        <!-- <button id="button">Search</button> -->
+      </div>
+
+      <div class="navbar">
+        <ul>
+          <li>
+            <a href="#">Premium</a>
+          </li>
+          <li>
+            <a href="#">Support</a>
+          </li>
+          <li>
+            <a href="#">Download</a>
+          </li>
+          <li class="divider">|</li>
+          
+        </ul>
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+
+
+
+    <div class="spotify-playlists">
+    <span><h3>Spotify Playlist</h3></span>
+    <span class="more"><a href=""><h5>More</h5></a></span>
+    <div class="list" id="playlist-container"></div>
+    </div>
+
+
+    <div class="spotify-playlists">
+    <span><h3>Focus</h3></span>
+    <span class="more"><a href=""><h5>More</h5></a></span>
+    <div class="list" id="focus-container"></div>
+    </div>
+
+    <div class="spotify-playlists">
+    <span><h3>Mood</h3></span>
+    <span class="more"><a href=""><h5>More</h5></a></span>
+    <div class="list" id="mood-container"></div>
+    </div>
+
+    <div class="footer-section">
+      <div class="footer">
+          <div class="footer-links">
+              <div class="footer-column">
+                  <div>Company</div>
+                  <ul class="col-links">
+                      <li><a href="">About</a></li>
+                      <li><a href="">Jobs</a></li>
+                      <li><a href="">For the Record</a></li>
+                  </ul>
+              </div>
+              <div class="footer-column">
+                  <div>Communities</div>
+                  <ul class="col-links">
+                      <li><a href="">For Artists</a></li>
+                      <li><a href="">Developers</a></li>
+                      <li><a href="">Advertising</a></li>
+                      <li><a href="">Investors</a></li>
+                      <li><a href="">Vendors</a></li>
+                  </ul>
+              </div>
+              <div class="footer-column">
+                  <div>Useful Links</div>
+                  <ul class="col-links">
+                      <li><a href="">Support</a></li>
+                      <li><a href="">Free Mobile App</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="social-links">
+              <div>
+                  <i class="fa-brands fa-instagram"></i>
+                  <i class="fa-brands fa-facebook"></i>
+                  <i class="fa-brands fa-x-twitter"></i>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <hr>
+    <div>
+      <p class="copyright">&copy; 2024 Spotify AB</p>
+  </div>
+  </div>
+
+  <div class="preview">
+    <div class="text">
+      <h6>Preview of Spotify</h6>
+      <p>Subscribe to get unlimited songs and podcasts without ads.</p>
+    </div>
+    <div class="button">
+      <button type="button">Subscribe</button>
+    </div>
+  </div>
+
+  <div class="footbar">
+    <div class="nav-item">
+      <a href="#" class="nav-link active">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">
+        <i class="fas fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">
+        <i class="fas fa-book-open"></i>
+        <span>Library</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

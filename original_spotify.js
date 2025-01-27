@@ -1,0 +1,101 @@
+// const url = "https://spotifyclone-iztn.onrender.com/posts"; // Local API URL
+url = "https://spotify-d9n3.onrender.com/posts"
+
+activeAudioPlayer = null;
+tracksData = []
+
+async function fetchPlaylist() {
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    tracksData = data[0].items;
+    displayPlaylistItems(data[0].items);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+function displayPlaylistItems(tracks) {
+  container = document.getElementById("playlist-container");
+  container.innerHTML = ""; 
+
+  tracks.forEach((item) => {
+    track = item.track;
+
+    card = document.createElement("div");
+    card.classList.add("item");
+
+    img = document.createElement("img");
+    img.src = track.album.images[0].url;
+    img.alt = track.name;
+
+     playIcon = document.createElement("div");
+    playIcon.classList.add("play");
+    playIcon.innerHTML = '<i class="fa fa-play"></i>';
+
+     trackTitle = document.createElement("h4");
+    trackTitle.textContent = track.name;
+
+     artistName = document.createElement("p");
+    artistName.textContent = track.artists[0].name;
+
+     audioPlayer = document.createElement("audio");
+    audioPlayer.classList.add("audio-player");
+    audioPlayer.controls = true;
+
+    playIcon.addEventListener("click", () => {
+       previewUrl = track.preview_url;
+
+      if (previewUrl) {
+        audioPlayer.src = previewUrl;
+        audioPlayer.play();
+
+        if (activeAudioPlayer && activeAudioPlayer !== audioPlayer) {
+          activeAudioPlayer.pause();
+          activeAudioPlayer.style.display = "none";
+        }
+
+        if (
+          audioPlayer.style.display === "none" ||
+          audioPlayer.style.display === ""
+        ) {
+          audioPlayer.style.display = "block";
+          activeAudioPlayer = audioPlayer;
+        } else {
+          audioPlayer.style.display = "none";
+          activeAudioPlayer = null;
+        }
+      } else {
+        alert("No preview available for this track.");
+      }
+
+      card.style.minWidth="200px"
+      card.style.Height = "100px"
+    });
+
+    card.appendChild(img);
+    card.appendChild(playIcon);
+    card.appendChild(trackTitle);
+    card.appendChild(artistName);
+    card.appendChild(audioPlayer);
+
+    container.appendChild(card);
+  });
+}
+
+function filterPlaylist() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const filteredTracks = tracksData.filter((item) =>
+      item.track.name.toLowerCase().includes(searchTerm) ||
+      item.track.artists[0].name.toLowerCase().includes(searchTerm)
+    );
+    displayPlaylistItems(filteredTracks);
+}
+
+
+fetchPlaylist();
+
+
