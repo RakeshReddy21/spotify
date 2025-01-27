@@ -19,35 +19,35 @@ async function Playlist() {
 }
 
 function Items(tracks) {
-   container = document.getElementById("focus-container");
+  const container = document.getElementById("focus-container");
   container.innerHTML = ""; 
 
   tracks.forEach((item) => {
-     track = item.track;
+    const track = item.track;
 
-    card = document.createElement("div");
+    const card = document.createElement("div");
     card.classList.add("item");
 
-    img = document.createElement("img");
+    const img = document.createElement("img");
     img.src = track.album.images[0].url;
     img.alt = track.name;
 
-    playIcon = document.createElement("div");
+    const playIcon = document.createElement("div");
     playIcon.classList.add("play");
     playIcon.innerHTML = '<i class="fa fa-play"></i>';
 
-    trackTitle = document.createElement("h4");
+    const trackTitle = document.createElement("h4");
     trackTitle.textContent = track.name;
 
-    artistName = document.createElement("p");
+    const artistName = document.createElement("p");
     artistName.textContent = track.artists[0].name;
 
-    audioPlayer = document.createElement("audio");
+    const audioPlayer = document.createElement("audio");
     audioPlayer.classList.add("audio-player");
     audioPlayer.controls = true;
 
     playIcon.addEventListener("click", () => {
-       previewUrl = track.preview_url;
+      const previewUrl = track.preview_url;
 
       if (previewUrl) {
         audioPlayer.src = previewUrl;
